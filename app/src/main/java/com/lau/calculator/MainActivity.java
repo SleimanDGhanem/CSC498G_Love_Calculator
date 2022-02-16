@@ -43,11 +43,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String text = spinner.getSelectedItem().toString();
 
         switch (text){
-            case "Java":
-                img.setImageResource(R.drawable.java);
-                break;
+
             case "SQL":
                 img.setImageResource(R.drawable.sql);
+                break;
+            case "Java":
+                img.setImageResource(R.drawable.java);
                 break;
             case "JavaScript":
                 img.setImageResource(R.drawable.javascript);
@@ -56,10 +57,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 img.setImageResource(R.drawable.python);
                 break;
             case "VisualBasic":
-                img.setImageResource(R.drawable.);
+                img.setImageResource(R.drawable.visualbasic);
                 break;
-            case "Java":
-                img.setImageResource(R.drawable.java);
+            case "Ruby":
+                img.setImageResource(R.drawable.ruby);
                 break;
 
         }
