@@ -8,4 +8,5 @@
         <item>VisualBasic</item>
         <item>Ruby</item>
     </string-array>
+    <string name="col1">Name</string>
 </resources>
