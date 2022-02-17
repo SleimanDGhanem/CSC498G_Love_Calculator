@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         Spinner spinner = findViewById(R.id.spinner1);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.language, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -43,10 +46,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
-
-    public void calculate(View v){
+    public void calculate(View v) {
         Spinner spinner = findViewById(R.id.spinner1);
         ImageView img = (ImageView) findViewById(R.id.img);
+
         TextView t = (TextView) findViewById(R.id.txt);
         String text = spinner.getSelectedItem().toString();
         Random rand = new Random();
@@ -55,16 +58,30 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         TableLayout table = (TableLayout) findViewById(R.id.table);
         TableRow tb = new TableRow(this);
-        TextView tv1 = new TextView(this);
-        TextView tv2 = new TextView(this);
-        TextView tv3 = new TextView(this);
-        tv1.setText(name.getText().toString());
-        tv2.setText(text);
-        tv3.setText();
-        tb.addView(tv1);
-        table.addView(tb);
+        TextView person = new TextView(this);
+        TextView language = new TextView(this);
+        TextView percentage = new TextView(this);
 
-        switch (text){
+        TableRow.LayoutParams tlparams = new TableRow.LayoutParams(
+                TableRow.LayoutParams.WRAP_CONTENT,
+                TableRow.LayoutParams.WRAP_CONTENT,
+                (float) 1.0);
+
+        person.setText(name.getText().toString());
+        language.setText(text);
+        percentage.setText(t.getText().toString());
+        person.setLayoutParams(new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+
+        tb.addView(person);
+        tb.addView(language);
+        tb.addView(percentage);
+
+
+
+
+        table.addView(tb);
+        img.setTranslationX(-1500);
+        switch (text) {
 
             case "SQL":
                 img.setImageResource(R.drawable.sql);
@@ -86,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
 
         }
+        img.animate().translationXBy(1500).rotation(3600).setDuration(3000);
 
 
     }
